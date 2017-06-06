@@ -6,6 +6,7 @@ public class cameraControl : MonoBehaviour
 {
 
     public Transform target;
+    public Transform helper;
 
     Transform camera;
 
@@ -18,12 +19,13 @@ public class cameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 dist = camera.position - target.position;
+        Vector3 dist = camera.position - target.position;      
         dist = Vector3.Normalize(dist);
         if (Input.GetMouseButton(0))
         {
-            transform.RotateAround(target.position, Vector3.left, Input.GetAxis("Mouse Y") * 10f);
-            transform.RotateAround(target.position, Vector3.up, Input.GetAxis("Mouse X") * 10f);
+            helper.Rotate(Vector3.up, Input.GetAxis("Mouse X") * 5f);
+            transform.RotateAround(helper.position, helper.transform.right, Input.GetAxis("Mouse Y") * -5f);
+            transform.RotateAround(target.position, Vector3.up, Input.GetAxis("Mouse X") * 5f);
         }
         camera.position = camera.position - dist * Input.GetAxis("Mouse ScrollWheel") * 10f;
     }
@@ -31,5 +33,6 @@ public class cameraControl : MonoBehaviour
     {
         camera.position = target.position + Vector3.back * 15f;
         camera.LookAt(target);
+        helper.rotation = Quaternion.identity;
     }
 }
