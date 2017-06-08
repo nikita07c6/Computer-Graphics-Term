@@ -21,6 +21,7 @@ public class cameraControl : MonoBehaviour
     {
         Vector3 dist = camera.position - target.position;      
         dist = Vector3.Normalize(dist);
+        //카메라와 원자사이의 벡터를 구하고 이를 정규화
         if (Input.GetMouseButton(0))
         {
             helper.Rotate(Vector3.up, Input.GetAxis("Mouse X") * 5f);

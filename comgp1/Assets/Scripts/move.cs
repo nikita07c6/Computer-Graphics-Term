@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class move : MonoBehaviour {
-    public GameObject bb;
+    public GameObject nucleus;
     public float x;
     public float y;
     public float z;
@@ -14,6 +14,6 @@ public class move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.RotateAround(bb.transform.position, new Vector3(x, y, z), 45*Time.deltaTime);
+        transform.RotateAround(nucleus.transform.position, new Vector3(x, y, z), 45*Time.deltaTime);
 	}
 }
